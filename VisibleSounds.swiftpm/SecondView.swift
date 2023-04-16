@@ -9,12 +9,13 @@ struct SecondView: View {
     @State var times: Double = 0.0
     
     var body: some View {
+        
         ZStack {
             Image("Back01")
                 .resizable()
                 .ignoresSafeArea(.all)
             VStack {
-                Text("De estas primeras exploraciones nace la cimática, haciendo visible las caras subyacentes de los sonidos, que muchas veces tienen un impacto en nuestras emociones, haciéndonos sentir:")
+                Text("De estas primeras exploraciones nace la cimática, permitiéndonos observar la belleza subyacente del sonido, que acompaña al impacto que tiene en nuestras emociones, haciéndonos sentir:")
                     .font(.body)
                     .padding(15)
                     .foregroundColor(Color.white)
@@ -23,13 +24,15 @@ struct SecondView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300)
+                        .cornerRadius(80)
                     Image("Background")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300)
+                        .cornerRadius(80)
                 }
                 // Imagen de una flecha para ir a la siguiente vista.
-                NavigationLink(destination: SecondView()) {
+                NavigationLink(destination: Happy()) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
