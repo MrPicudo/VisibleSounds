@@ -3,6 +3,13 @@
 import SwiftUI
 
 struct Sad: View {
+    @ObservedObject var audioPlayer = AudioPlayer()
+    
+    // Enlazamos las instancias de "audioPlayer" de las diferentes vistas para que sean la misma.
+    init(audioPlayer: AudioPlayer) {
+        self.audioPlayer = audioPlayer
+    }
+    
     var body: some View {
         ZStack {
             Image("Sadness")
@@ -22,11 +29,9 @@ struct Sad: View {
                 }
             }
         }
+        .onAppear {
+            audioPlayer.playS(resourceName: "Correct", resourceExtension: "mp3")
+        }
     }
 }
 
-struct Sad_Previews: PreviewProvider {
-    static var previews: some View {
-        Sad()
-    }
-}

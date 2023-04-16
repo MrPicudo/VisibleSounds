@@ -1,8 +1,13 @@
 /* Happy.swift --> VisibleSounds. Created by Miguel Torres on 16/04/23. */
 
 import SwiftUI
+import Combine
 
 struct Happy: View {
+    
+    // Instancia de la clase AudioPlayer para reproducir sonidos
+    @StateObject var audioPlayer = AudioPlayer()
+
     var body: some View {
         ZStack {
             Image("Joy")
@@ -13,7 +18,7 @@ struct Happy: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Sad()) {
+                NavigationLink(destination: Sad(audioPlayer: audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -21,8 +26,14 @@ struct Happy: View {
                         .frame(width: 50)
                 }
             }
-            
         }
+        .onAppear {
+            audioPlayer.playS(resourceName: "MarioBros", resourceExtension: "mp3")
+        }
+        .onDisappear {
+            audioPlayer.stopSound()
+        }
+        
     }
 }
 

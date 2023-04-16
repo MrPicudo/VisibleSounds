@@ -6,7 +6,6 @@ struct ContentView: View {
     // Variable de estado que almacena el nombre del frame para la animación.
     @State var name: String = "A1"
     @State var times: Double = 0.0
-    let audioPlayer = AudioPlayer()
     
     var body: some View {
             ZStack {
@@ -39,9 +38,6 @@ struct ContentView: View {
                                 .padding(.top, 20)
                         }
                     }
-            }
-            .onAppear {
-                audioPlayer.playS(resourceName: "Correct", resourceExtension: "mp3")
             }
     }
 }
