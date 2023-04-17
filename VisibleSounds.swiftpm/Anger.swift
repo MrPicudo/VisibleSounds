@@ -3,6 +3,9 @@
 import SwiftUI
 
 struct Anger: View {
+    
+    @EnvironmentObject var audioPlayer: AudioPlayer
+    
     var body: some View {
         ZStack {
             Image("Anger")
@@ -13,7 +16,7 @@ struct Anger: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Fear()) {
+                NavigationLink(destination: Fear().environmentObject(audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -22,11 +25,8 @@ struct Anger: View {
                 }
             }
         }
-    }
-}
-
-struct Anger_Previews: PreviewProvider {
-    static var previews: some View {
-        Anger()
+        .onAppear {
+            audioPlayer.playS(resourceName: "Anger", resourceExtension: "mp3")
+        }
     }
 }

@@ -18,7 +18,7 @@ struct Happy: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Sad(audioPlayer: audioPlayer)) {
+                NavigationLink(destination: Sad().environmentObject(audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -28,11 +28,11 @@ struct Happy: View {
             }
         }
         .onAppear {
-            audioPlayer.playS(resourceName: "MarioBros", resourceExtension: "mp3")
+            audioPlayer.playS(resourceName: "Mario", resourceExtension: "mp3")
         }
-        .onDisappear {
-            audioPlayer.stopSound()
-        }
+//        .onDisappear {
+//            audioPlayer.stopSound()
+//        }
         
     }
 }

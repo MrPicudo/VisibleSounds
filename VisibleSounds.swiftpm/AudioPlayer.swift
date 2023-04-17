@@ -8,6 +8,9 @@ class AudioPlayer: ObservableObject {
     @Published var audioPlayer: AVAudioPlayer?
     
     func playS(resourceName: String, resourceExtension: String) {
+        // Detenemos cualquier canción
+        stopSound()
+        
         guard let url = Bundle.main.url(forResource: resourceName, withExtension: resourceExtension) else {
             print("No se pudo encontrar el archivo de sonido.")
             return

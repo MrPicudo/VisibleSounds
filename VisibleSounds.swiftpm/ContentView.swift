@@ -3,8 +3,6 @@ import AVFoundation
 
 struct ContentView: View {
     
-    // Variable de estado que almacena el nombre del frame para la animación.
-    @State var name: String = "A1"
     @State var times: Double = 0.0
     
     var body: some View {

@@ -3,12 +3,13 @@
 import SwiftUI
 
 struct Sad: View {
-    @ObservedObject var audioPlayer = AudioPlayer()
+    
+    @EnvironmentObject var audioPlayer: AudioPlayer
     
     // Enlazamos las instancias de "audioPlayer" de las diferentes vistas para que sean la misma.
-    init(audioPlayer: AudioPlayer) {
-        self.audioPlayer = audioPlayer
-    }
+//    init(audioPlayer: AudioPlayer) {
+//        self.audioPlayer = audioPlayer
+//    }
     
     var body: some View {
         ZStack {
@@ -20,7 +21,7 @@ struct Sad: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Anger()) {
+                NavigationLink(destination: Anger().environmentObject(audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -30,7 +31,7 @@ struct Sad: View {
             }
         }
         .onAppear {
-            audioPlayer.playS(resourceName: "Correct", resourceExtension: "mp3")
+            audioPlayer.playS(resourceName: "Near", resourceExtension: "mp3")
         }
     }
 }
