@@ -3,6 +3,9 @@
 import SwiftUI
 
 struct Fear: View {
+    
+    @EnvironmentObject var audioPlayer: AudioPlayer
+    
     var body: some View {
         ZStack {
             Image("Fear")
@@ -21,6 +24,9 @@ struct Fear: View {
                         .frame(width: 50)
                 }
             }
+        }
+        .onAppear {
+            audioPlayer.playS(resourceName: "Fear", resourceExtension: "mp3")
         }
     }
 }
