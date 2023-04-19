@@ -16,7 +16,7 @@ struct Fear: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Grid().environmentObject(audioPlayer)) {
+                NavigationLink(destination: Example().environmentObject(audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -36,7 +36,9 @@ struct Fear: View {
 }
 
 struct Fear_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
     static var previews: some View {
         Fear()
+            .environmentObject(audioPlayer)
     }
 }

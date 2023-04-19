@@ -2,23 +2,28 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var audioPlayer = AudioPlayer()
+    
     var body: some View {
         // Creamos una TabView para manejar distintas pestañas en nuestro proyecto
         TabView {
             // Primera pestaña
             AboutMe()
+                .environmentObject(audioPlayer)
                 .tabItem {
                     Label("About me", systemImage: "person")
                 }
             
             // Segunda pestaña
             Intro()
+                .environmentObject(audioPlayer)
                 .tabItem {
                     Label("Visible sounds", systemImage: "rectangle.inset.filled.and.person.filled")
                 }
             
             // Tercera pestaña
-            Grid()
+            Example()
+                .environmentObject(audioPlayer)
                 .tabItem {
                     Label("Forms", systemImage: "arrow.triangle.2.circlepath.circle")
                 }
@@ -91,8 +96,11 @@ struct ContentView: View {
  */
 
 
-struct Previews_ContentView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        ContentView()
+            .environmentObject(audioPlayer)
     }
 }

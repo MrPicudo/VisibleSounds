@@ -49,7 +49,9 @@ struct Intro: View {
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
     static var previews: some View {
         Intro()
+            .environmentObject(audioPlayer)
     }
 }

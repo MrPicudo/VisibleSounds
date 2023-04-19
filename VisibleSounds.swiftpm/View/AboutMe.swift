@@ -50,7 +50,10 @@ struct AboutMe: View {
 }
 
 struct AboutMe_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    
     static var previews: some View {
         AboutMe()
+            .environmentObject(audioPlayer)
     }
 }

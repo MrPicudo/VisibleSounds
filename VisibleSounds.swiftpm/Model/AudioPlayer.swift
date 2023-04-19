@@ -26,7 +26,6 @@ class AudioPlayer: ObservableObject {
     }
     
     func stopSound() {
-        print("Stoping")
         audioPlayer?.stop()
         audioPlayer?.currentTime = 0
     }

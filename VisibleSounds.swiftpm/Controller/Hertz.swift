@@ -8,41 +8,41 @@ public func hertzvalue(name: String) -> String {
     
     switch name.first {
     case "A":
-        hz = "345 Hz"
+        hz = "345Hz"
     case "B":
-        hz = "1033 Hz"
+        hz = "1033Hz"
     case "C":
-        hz = "1820 Hz"
+        hz = "1820Hz"
     case "D":
-        hz = "2041 Hz"
+        hz = "2041Hz"
     case "E":
-        hz = "3240 Hz"
+        hz = "3240Hz"
     case "F":
-        hz = "3825 Hz"
+        hz = "3825Hz"
     case "G":
-        hz = "3975 Hz"
+        hz = "3975Hz"
     case "H":
-        hz = "4049 Hz"
+        hz = "4049Hz"
     case "I":
-        hz = "4129 Hz"
+        hz = "4129Hz"
     case "J":
-        hz = "4173 Hz"
+        hz = "4173Hz"
     case "K":
-        hz = "4221 Hz"
+        hz = "4221Hz"
     case "L":
-        hz = "4280 Hz"
+        hz = "4280Hz"
     case "M":
-        hz = "4444 Hz"
+        hz = "4444Hz"
     case "N":
-        hz = "4671 Hz"
+        hz = "4671Hz"
     case "O":
-        hz = "4840 Hz"
+        hz = "4840Hz"
     case "P":
-        hz = "5201 Hz"
+        hz = "5201Hz"
     case "Q":
-        hz = "5284 Hz"
+        hz = "5284Hz"
     default:
-        hz = "0 Hz"
+        hz = "0Hz"
     }
     
     return hz

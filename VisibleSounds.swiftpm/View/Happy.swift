@@ -36,7 +36,9 @@ struct Happy: View {
 }
 
 struct Happy_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
     static var previews: some View {
         Happy()
+            .environmentObject(audioPlayer)
     }
 }

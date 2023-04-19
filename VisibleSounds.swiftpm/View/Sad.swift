@@ -37,3 +37,11 @@ struct Sad: View {
     }
 }
 
+
+struct Sad_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    static var previews: some View {
+        Sad()
+            .environmentObject(audioPlayer)
+    }
+}

@@ -19,6 +19,9 @@ struct Grid: View {
     // Variable de estado para controlar los botones activos.
     @State var showing: Bool = false
     
+    // Variable de estado para controlar la frecuencia de sonido
+    @State var hzValue: String = "345Hz"
+    
     // Arreglo de imágenes para crear los botones que activan las animaciones.
     let allAnimations: [FrameSound] = [
         FrameSound(name: "A30"),
@@ -65,14 +68,21 @@ struct Grid: View {
                                 selectedAnimation = animation
                                 // Ciclo para la animación seleccionada
                                 for i in 1...30 {
-                                    Timer.scheduledTimer(withTimeInterval: 0.07 * times, repeats: false) { timer in
+                                    Timer.scheduledTimer(withTimeInterval: 0.09 * times, repeats: false) { timer in
                                         name = String(selectedAnimation.name.first!) + String(i)
+                                        if i == 1 { // Por el retraso del ciclo for, debemos de actualizar el nombre dentro del primer ciclo, o se actualiza con el valor anterior.
+                                            // Esto es porque todo el código dentro del closure del botón se realiza en microsegundos, entonces no ha llegado al primer ciclo cuando ya "actualizó" el valor si lo dejamos fuera del ciclo for, y no específicamente dentro del primer ciclo.
+                                            hzValue = hertzvalue(name: name)
+                                            audioPlayer.playS(resourceName: hzValue, resourceExtension: "mp3")
+                                        }
                                         showing = !name.contains("30")
+                                        if !showing {
+                                            audioPlayer.stopSound()
+                                        }
                                     }
                                     times += 1 // Modificamos el contador para que cada ciclo se muestre en un tiempo distinto
                                 }
                                 times = 0.0
-                                audioPlayer.playS(resourceName: "Jump", resourceExtension: "mp3")
                             } label: {
                                 // En un ZStack el primer elemento va abajo de los que le siguen.
                                 ZStack {
@@ -112,3 +122,11 @@ struct Grid: View {
     }
 }
 
+
+struct Grid_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    static var previews: some View {
+        Grid()
+            .environmentObject(audioPlayer)
+    }
+}

@@ -32,9 +32,7 @@ struct SecondView: View {
                             .frame(width: 100)
                             .padding(20)
                     }
-                }.simultaneousGesture(TapGesture().onEnded({
-                    audioPlayer.playS(resourceName: "Jump", resourceExtension: "mp3")
-                }))
+                }
             }
         }
         
@@ -42,7 +40,9 @@ struct SecondView: View {
 }
 
 struct SecondView_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
     static var previews: some View {
         SecondView()
+            .environmentObject(audioPlayer)
     }
 }

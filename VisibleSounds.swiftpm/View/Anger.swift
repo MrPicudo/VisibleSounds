@@ -31,3 +31,11 @@ struct Anger: View {
         }
     }
 }
+
+struct Anger_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    static var previews: some View {
+        Anger()
+            .environmentObject(audioPlayer)
+    }
+}
