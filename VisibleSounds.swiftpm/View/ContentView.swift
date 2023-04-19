@@ -1,44 +1,45 @@
 import SwiftUI
-import AVFoundation
 
 struct ContentView: View {
     
-    @State var times: Double = 0.0
-    
     var body: some View {
-            ZStack {
-                Image("Back01")
-                    .resizable()
-                    .ignoresSafeArea(.all)
-                    VStack {
-                        ScrollView {
-                            Text("Cymatics")
-                                .font(.largeTitle)
-                                .fontWeight(.black)
-                                .foregroundColor(Color.white)
-                                .padding(.top, 50)
-                            Text("La cimática es el estudio de algo invisible a nuestros ojos: la geometría escondida dentro de las vibraciones que genera el sonido. Ernst Chladni, músico y filósofo Alemán descubrió estas figuras al hacer vibrar un plato metálico con un arco de violín, y las bautizó como patrones de Chladni.")
-                            .font(.body)
-                                .padding(15)
-                                .foregroundColor(Color.white)
-                            Image("Violin")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(30)
-                        }
-                        // Imagen de una flecha para ir a la siguiente vista.
-                        NavigationLink(destination: SecondView()) {
-                            Image(systemName: "arrowshape.right.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(Color.gray)
-                                .frame(width: 50)
-                                .padding(.top, 20)
-                        }
-                    }
-            }
+        // Creamos una TabView para manejar distintas pestañas en nuestro proyecto
+        TabView {
+            // Primera pestaña
+            AboutMe()
+                .tabItem {
+                    Label("About me", systemImage: "person")
+                }
+            
+            // Segunda pestaña
+            Intro()
+                .tabItem {
+                    Label("Visible sounds", systemImage: "rectangle.inset.filled.and.person.filled")
+                }
+            
+            // Tercera pestaña
+            Grid()
+                .tabItem {
+                    Label("Forms", systemImage: "arrow.triangle.2.circlepath.circle")
+                }
+            
+            // Cuarta pestaña
+//            Slider()
+//                .tabItem {
+//                    Label("Animation", systemImage: "video.fill")
+//                }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
 
 /* Ejemplo de cómo agregar una acción de gesto a una vista:
  

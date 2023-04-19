@@ -30,9 +30,6 @@ struct Happy: View {
         .onAppear {
             audioPlayer.playS(resourceName: "Mario", resourceExtension: "mp3")
         }
-//        .onDisappear {
-//            audioPlayer.stopSound()
-//        }
         
     }
 }

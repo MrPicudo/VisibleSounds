@@ -16,7 +16,7 @@ struct Fear: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: SecondView()) {
+                NavigationLink(destination: Grid()) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
@@ -27,6 +27,9 @@ struct Fear: View {
         }
         .onAppear {
             audioPlayer.playS(resourceName: "Fear", resourceExtension: "mp3")
+        }
+        .onDisappear {
+            audioPlayer.stopSound()
         }
     }
 }
