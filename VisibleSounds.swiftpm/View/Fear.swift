@@ -16,12 +16,13 @@ struct Fear: View {
                 ScrollView {
                     Text("")
                 }
-                NavigationLink(destination: Grid()) {
+                NavigationLink(destination: Grid().environmentObject(audioPlayer)) {
                     Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .scaledToFit()
                         .foregroundColor(Color.white)
-                        .frame(width: 50)
+                        .frame(width: 100)
+                        .padding(.bottom, 50)
                 }
             }
         }

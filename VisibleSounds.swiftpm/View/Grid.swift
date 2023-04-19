@@ -8,8 +8,10 @@ struct Grid: View {
     @State var name: String = "A1"
     @State var times: Double = 0.0
     
+    @EnvironmentObject var audioPlayer: AudioPlayer
+    
     // Objeto que define un arreglo de elementos "GridItem()", es decir, creamos una cuadrícula que tendrá 3 columnas.
-    let columnLayout = Array(repeating: GridItem(), count: 5)
+    let columnLayout = Array(repeating: GridItem(), count: 6)
     
     // Variable mutable que define el color seleccionado para mostrarlo en el texto "Selected Color" de la app.
     @State var selectedAnimation = FrameSound(name: "A30")
@@ -48,9 +50,10 @@ struct Grid: View {
             VStack {
                 // Instrucciones de la app
                 Text("Select an image to view how it is formed")
-                    .font(.title)
-                    .fontWeight(.black)
-                    .foregroundColor(Color.purple)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                    .padding(.top, 100)
                 // Usamos un ScrollView para que en caso de que haya más colores de los que caben, podamos desplazarnos.
                 ScrollView {
                     // Iniciamos la cuadrícula que se crea con el arreglo de objetos GridItem que definimos arriba. El tipo de objeto "LayVGrid" crea cada cuadrícula o "grid" hasta que se necesita, y no antes. El argumento de LazyVGrid define cuántas columnas se van a mostrar en la cuadrícula.
@@ -64,12 +67,12 @@ struct Grid: View {
                                 for i in 1...30 {
                                     Timer.scheduledTimer(withTimeInterval: 0.07 * times, repeats: false) { timer in
                                         name = String(selectedAnimation.name.first!) + String(i)
-                                        print(name)
                                         showing = !name.contains("30")
                                     }
                                     times += 1 // Modificamos el contador para que cada ciclo se muestre en un tiempo distinto
                                 }
                                 times = 0.0
+                                audioPlayer.playS(resourceName: "Jump", resourceExtension: "mp3")
                             } label: {
                                 // En un ZStack el primer elemento va abajo de los que le siguen.
                                 ZStack {
@@ -102,6 +105,7 @@ struct Grid: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
+                    .padding(.bottom, 50)
             }
         }
         

@@ -5,6 +5,8 @@ import SwiftUI
 struct Intro: View {
     
     @State var times: Double = 0.0
+    // Creamos el objeto observable para toda la aplicación, que usaremos para reproducir audio.
+    @StateObject var audioPlayer = AudioPlayer()
     
     var body: some View {
             ZStack {
@@ -12,29 +14,32 @@ struct Intro: View {
                     .resizable()
                     .ignoresSafeArea(.all)
                     VStack {
-                        ScrollView {
-                            Text("Cymatics")
-                                .font(.largeTitle)
-                                .fontWeight(.black)
-                                .foregroundColor(Color.white)
-                                .padding(.top, 30)
+                        Text("Cymatics")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.white)
+                            .padding(.top, 30)
+                        HStack {
                             Text("La cimática es el estudio de algo invisible a nuestros ojos: la geometría escondida dentro de las vibraciones que genera el sonido. Ernst Chladni, músico y filósofo Alemán descubrió estas figuras al hacer vibrar un plato metálico con un arco de violín, y las bautizó como patrones de Chladni.")
-                            .font(.body)
-                                .padding(15)
+                                .font(.title2)
+                                .multilineTextAlignment(.center)
+                                .padding(50)
                                 .foregroundColor(Color.white)
                             Image("Violin")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .padding(50)
+                                .padding(100)
                         }
-                        // Imagen de una flecha para ir a la siguiente vista.
-                        NavigationLink(destination: SecondView()) {
-                            Image(systemName: "arrowshape.right.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(Color.gray)
-                                .frame(width: 50)
-                                .padding(20)
+                        // Creamos el navigation link indicando que el objeto observable "audioPlayer" pasa a la siguiente vista.
+                        NavigationLink(destination: SecondView().environmentObject(audioPlayer)) {
+                            ZStack {
+                                Image(systemName: "arrowshape.right.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(Color.gray)
+                                    .frame(width: 100)
+                                    .padding(20)
+                            }
                         }
                     }
             }

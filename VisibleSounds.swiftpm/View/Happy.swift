@@ -6,7 +6,7 @@ import Combine
 struct Happy: View {
     
     // Instancia de la clase AudioPlayer para reproducir sonidos
-    @StateObject var audioPlayer = AudioPlayer()
+    @EnvironmentObject var audioPlayer: AudioPlayer
 
     var body: some View {
         ZStack {
@@ -23,7 +23,8 @@ struct Happy: View {
                         .resizable()
                         .scaledToFit()
                         .foregroundColor(Color.white)
-                        .frame(width: 50)
+                        .frame(width: 100)
+                        .padding(.bottom, 50)
                 }
             }
         }

@@ -26,7 +26,8 @@ struct Sad: View {
                         .resizable()
                         .scaledToFit()
                         .foregroundColor(Color.white)
-                        .frame(width: 50)
+                        .frame(width: 100)
+                        .padding(.bottom, 50)
                 }
             }
         }

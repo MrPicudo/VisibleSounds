@@ -8,6 +8,9 @@ struct SecondView: View {
     @State var name: String = "A1"
     @State var times: Double = 0.0
     
+    // Después de crear el @StateObject en esa vista, todos los que siguen (a partir de navigation links) deben tener un @EnvironmentObject, que se pasa desde el mismo navigation link.
+    @EnvironmentObject var audioPlayer: AudioPlayer
+    
     var body: some View {
         
         ZStack {
@@ -15,18 +18,20 @@ struct SecondView: View {
                 .resizable()
                 .ignoresSafeArea(.all)
             VStack {
-                Text("De esta manera, la Cimática nos permite observar la belleza subyacente del sonido, esa complejidad oculta que acompaña al impacto que tiene en nuestras emociones, haciéndonos sentir:")
-                    .font(.body)
+                Text("Una manera más tradicional de De esta manera, la Cimática nos permite observar la belleza subyacente del sonido, esa complejidad oculta que acompaña al impacto que tiene en nuestras emociones, haciéndonos sentir:")
+                    .font(.title2)
                     .padding(15)
                     .foregroundColor(Color.white)
                 // Imagen de una flecha para ir a la siguiente vista.
-                NavigationLink(destination: Happy()) {
-                    Image(systemName: "arrowshape.right.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(Color.gray)
-                        .frame(width: 50)
-                        .padding(.top, 20)
+                NavigationLink(destination: Happy().environmentObject(audioPlayer)) {
+                    ZStack {
+                        Image(systemName: "arrowshape.right.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.gray)
+                            .frame(width: 100)
+                            .padding(20)
+                    }
                 }
             }
         }
