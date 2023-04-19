@@ -11,7 +11,7 @@ struct Grid: View {
     @EnvironmentObject var audioPlayer: AudioPlayer
     
     // Objeto que define un arreglo de elementos "GridItem()", es decir, creamos una cuadrícula que tendrá 3 columnas.
-    let columnLayout = Array(repeating: GridItem(), count: 6)
+    let columnLayout = Array(repeating: GridItem(), count: 9)
     
     // Variable mutable que define el color seleccionado para mostrarlo en el texto "Selected Color" de la app.
     @State var selectedAnimation = FrameSound(name: "A30")
@@ -110,7 +110,7 @@ struct Grid: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
-                .padding(.bottom, 30)
+
                 Text(hertzvalue(name: name))
                     .font(.title2)
                     .fontWeight(.bold)
