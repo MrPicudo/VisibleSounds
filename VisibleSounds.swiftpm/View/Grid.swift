@@ -78,11 +78,11 @@ struct Grid: View {
                                 ZStack {
                                     Image(animation.name)
                                         .resizable()
-                                        .aspectRatio(contentMode: .fit)
+                                        .aspectRatio(1.0, contentMode: .fit)
                                         .cornerRadius(20)
                                     Image("Background")
                                         .resizable()
-                                        .aspectRatio(contentMode: .fill)
+                                        .aspectRatio(1.0, contentMode: .fill)
                                 }
                             }
                             .buttonStyle(.automatic) // Estilo del botón.

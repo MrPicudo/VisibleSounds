@@ -5,8 +5,8 @@ import SwiftUI
 struct Intro: View {
     
     @State var times: Double = 0.0
-    // Creamos el objeto observable para toda la aplicación, que usaremos para reproducir audio.
-    @StateObject var audioPlayer = AudioPlayer()
+    // Instancia de la clase AudioPlayer para reproducir sonidos
+    @EnvironmentObject var audioPlayer: AudioPlayer
     
     var body: some View {
             ZStack {
@@ -40,7 +40,9 @@ struct Intro: View {
                                     .frame(width: 100)
                                     .padding(20)
                             }
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded({
+                            audioPlayer.playS(resourceName: "Jump", resourceExtension: "mp3")
+                        }))
                     }
             }
     }
