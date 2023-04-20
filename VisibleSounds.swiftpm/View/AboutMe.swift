@@ -4,7 +4,7 @@ import SwiftUI
 
 struct AboutMe: View {
     
-    // Creamos el objeto observable para toda la aplicación, que usaremos para reproducir audio.
+    // We create the observable object for the entire application, which we will use to play audio.
     @StateObject var audioPlayer = AudioPlayer()
     
     var body: some View {
@@ -14,22 +14,25 @@ struct AboutMe: View {
                 .ignoresSafeArea(.all)
             VStack {
                 HStack {
-                    Image("Violin")
+                    Image("Memoji")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .cornerRadius(100)
+                        .shadow(radius: 50)
                         .padding(100)
+                        
                     VStack {
                         Text("Hello, I'm Miguel Torres")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(Color.white)
                             .padding(20)
-                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+                        Text("I am a senior student pursuing a degree in Applied Mathematics and Computing, originally from Xochimilco, Mexico City. Last August, I had the opportunity to begin studying iOS development during my social service at the iOS Development Lab in Mexico. This program, sponsored by Apple, aims to promote programming education and provide growth opportunities through the donation of fully-equipped labs in my country.\n\nMy application, VisibleSound, draws inspiration from a wide range of interests that I am passionate about, such as movies, video games, and educational apps. The main theme focuses on the connection between mathematics and music, merging two of my favorite areas. I sincerely hope you enjoy this creation as much as I enjoyed developing it.")
                             .font(.title2)
                             .fontWeight(.medium)
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color.white)
-                            .padding(20)
+                            .padding(50)
                     }
                 }
                 NavigationLink(destination: Intro().environmentObject(audioPlayer)) {

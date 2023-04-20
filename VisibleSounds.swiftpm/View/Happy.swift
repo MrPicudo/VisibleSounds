@@ -4,8 +4,7 @@ import SwiftUI
 import Combine
 
 struct Happy: View {
-    
-    // Instancia de la clase AudioPlayer para reproducir sonidos
+
     @EnvironmentObject var audioPlayer: AudioPlayer
 
     var body: some View {
@@ -13,7 +12,6 @@ struct Happy: View {
             Image("Joy")
                 .resizable()
                 .ignoresSafeArea(.all)
-            // Imagen de una flecha para ir a la siguiente vista.
             VStack {
                 ScrollView {
                     Text("")

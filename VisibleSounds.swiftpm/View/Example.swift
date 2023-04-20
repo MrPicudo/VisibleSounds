@@ -3,14 +3,14 @@
 import SwiftUI
 
 struct Example: View {
-    
-    // Variable de estado que almacena el nombre del frame para la animación.
+        
+    // State variable that stores the name of the frame for the animation.
     @State var name: String = "A1"
     @State var times: Double = 0.0
     
     @EnvironmentObject var audioPlayer: AudioPlayer
     
-    // Variable de estado para controlar los botones activos.
+    // State variable that controls active buttons.
     @State var showing: Bool = false
     
     var body: some View {
@@ -21,9 +21,9 @@ struct Example: View {
             VStack(spacing: 50) {
                 HStack {
                     VStack {
-                        Text("Si hacemos vibrar una placa metálica plana, que contiene arena o sal sobre su superficie, con un sonido de una determinada frecuencia, por ejemplo, de 345 Hertz, se formará la siguiente figura sobre la placa metática: ")
+                        Text("If we vibrate a flat metal plate, which contains sand or salt on its surface, with a sound of a certain frequency, for example, 345 Hertz, the following figure will form on the metal plate: ")
                             .font(.title2)
-                            .fontWeight(.semibold)
+                            .fontWeight(.medium)
                             .multilineTextAlignment(.center)
                             .foregroundColor(Color.white)
                             .padding(50)
@@ -36,7 +36,7 @@ struct Example: View {
                                             audioPlayer.stopSound()
                                         }
                                     }
-                                times += 1 // Modificamos el contador para que cada ciclo se muestre en un tiempo distinto
+                                times += 1 // We modify the counter so that each cycle is displayed at a different time.
                             }
                             times = 0.0
                             audioPlayer.playS(resourceName: "345Hz", resourceExtension: "mp3")
@@ -51,8 +51,9 @@ struct Example: View {
                                     .foregroundColor(Color.white)
                             }
                         }
-                        .disabled(showing) // Desactivamos el botón cada vez que se esté mostrando una animación.
+                        .disabled(showing) // We disable the button each time an animation is being displayed.
                     }
+                    /* */
                     ZStack {
                         Image(name)
                             .resizable()
@@ -75,9 +76,6 @@ struct Example: View {
                 }
             }
         }
-        
-        
-        
         
     }
 }

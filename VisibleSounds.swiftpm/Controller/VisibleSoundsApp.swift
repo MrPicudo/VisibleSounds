@@ -5,7 +5,7 @@ import SwiftUI
 struct VisibleSoundsApp: App {
     var body: some Scene {
         WindowGroup {
-            // Creamos un NavigationStack que contenga a la vista principal para poder desplazarnos entre vistas.
+            // We create a NavigationStack that contains the main view to be able to navigate between views.
             NavigationStack {
                 ContentView()
             }

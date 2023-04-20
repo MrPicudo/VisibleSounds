@@ -11,7 +11,7 @@ struct Anger: View {
             Image("Anger")
                 .resizable()
                 .ignoresSafeArea(.all)
-            // Imagen de una flecha para ir a la siguiente vista.
+            // Image of an arrow to go to the next view.
             VStack {
                 ScrollView {
                     Text("")

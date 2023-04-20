@@ -4,15 +4,15 @@ import Foundation
 import AVFoundation
 
 class AudioPlayer: ObservableObject {
-    // Variable que puede ser compartida entre distintas vistas
+    // Variable that can be shared between different views.
     @Published var audioPlayer: AVAudioPlayer?
     
     func playS(resourceName: String, resourceExtension: String) {
-        // Detenemos cualquier canción
+        // We stop any song.
         stopSound()
         
         guard let url = Bundle.main.url(forResource: resourceName, withExtension: resourceExtension) else {
-            print("No se pudo encontrar el archivo de sonido.")
+            print("The sound file could not be found.")
             return
         }
         
@@ -21,7 +21,7 @@ class AudioPlayer: ObservableObject {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         } catch let error {
-            print("Error al reproducir el sonido: \(error.localizedDescription)")
+            print("Error playing the file: \(error.localizedDescription)")
         }
     }
     

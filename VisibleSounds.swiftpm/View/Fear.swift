@@ -11,7 +11,6 @@ struct Fear: View {
             Image("Fear")
                 .resizable()
                 .ignoresSafeArea(.all)
-            // Imagen de una flecha para ir a la siguiente vista.
             VStack {
                 ScrollView {
                     Text("")

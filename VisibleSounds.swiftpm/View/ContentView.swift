@@ -5,45 +5,40 @@ struct ContentView: View {
     @StateObject var audioPlayer = AudioPlayer()
     
     var body: some View {
-        // Creamos una TabView para manejar distintas pestañas en nuestro proyecto
+        // We create a TabView to handle different tabs in our project.
         TabView {
-            // Primera pestaña
+            // First tab.
             AboutMe()
                 .environmentObject(audioPlayer)
                 .tabItem {
                     Label("About me", systemImage: "person")
                 }
             
-            // Segunda pestaña
+            // Second tab
             Intro()
                 .environmentObject(audioPlayer)
                 .tabItem {
                     Label("Visible sounds", systemImage: "rectangle.inset.filled.and.person.filled")
                 }
             
-            // Tercera pestaña
+            // Third tab.
             Example()
                 .environmentObject(audioPlayer)
                 .tabItem {
                     Label("Forms", systemImage: "arrow.triangle.2.circlepath.circle")
                 }
-            
-            // Cuarta pestaña
-//            Slider()
-//                .tabItem {
-//                    Label("Animation", systemImage: "video.fill")
-//                }
         }
     }
 }
 
-
-
-
-
-
-
-
+struct ContentView_Previews: PreviewProvider {
+    static let audioPlayer = AudioPlayer()
+    
+    static var previews: some View {
+        ContentView()
+            .environmentObject(audioPlayer)
+    }
+}
 
 
 /* Ejemplo de cómo agregar una acción de gesto a una vista:
@@ -94,13 +89,3 @@ struct ContentView: View {
  }
  
  */
-
-
-struct ContentView_Previews: PreviewProvider {
-    static let audioPlayer = AudioPlayer()
-    
-    static var previews: some View {
-        ContentView()
-            .environmentObject(audioPlayer)
-    }
-}
