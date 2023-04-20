@@ -18,7 +18,7 @@ struct SecondView: View {
                 .resizable()
                 .ignoresSafeArea(.all)
             VStack {
-                Text("A more modern way to visualize Cymatics is through a sound player at different frequencies, where we can observe that the higher the frequency, the greater the complexity of the figure formed. In this way, Cymatics allows us to observe the underlying beauty of sound, that hidden complexity that accompanies the impact it has on our emotions, making us feel...")
+                Text("A modern way to visualize Cymatics is through a sound player at different frequencies, where we can observe that the higher the frequency, the greater the complexity of the figure formed. In this way, Cymatics allows us to observe the underlying beauty of sound, that hidden complexity that accompanies the impact it has on our emotions, making us feel...")
                     .font(.title2)
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)

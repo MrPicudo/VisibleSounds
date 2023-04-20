@@ -4,25 +4,15 @@ import SwiftUI
 
 struct Grid: View {
     
-    // State variable that stores the name of the frame for the animation.
-    @State var name: String = "A1"
-    @State var times: Double = 0.0
-    
     @EnvironmentObject var audioPlayer: AudioPlayer
     
-    // Object that defines an array of "GridItem()" elements, meaning, we create a grid that will have 9 columns.
-    let columnLayout = Array(repeating: GridItem(), count: 9)
-    
-    // State variable that defines the selected color to display it in the "Selected Color" text of the app.
     @State var selectedAnimation = FrameSound(name: "A30")
-    
-    // State variable to control active buttons.
-    @State var showing: Bool = false
-    
-    // VState variable to control sound frequency.
     @State var hzValue: String = "345Hz"
+    @State var showing: Bool = false
+    @State var times: Double = 0.0
+    @State var name: String = "A1"
     
-    // Array of FrameSound objects to create buttons that activate animations.
+    let columnLayout = Array(repeating: GridItem(), count: 9)
     let allAnimations: [FrameSound] = [
         FrameSound(name: "A30"),
         FrameSound(name: "B30"),
@@ -57,7 +47,7 @@ struct Grid: View {
                     .fontWeight(.heavy)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.white)
-                    .padding(50)
+                    .padding(15)
                 // We use a ScrollView so that if there are more colors than can fit, we can scroll.
                 ScrollView {
                     // We start the grid that is created with the array of GridItem objects we defined above. The "LayVGrid" object type creates each grid only when needed, and not before. The LazyVGrid argument defines how many columns will be displayed in the grid.
@@ -101,8 +91,9 @@ struct Grid: View {
                             .foregroundColor(Color.black)
                         }
                     }
-                    .padding(20)
                 }
+                .padding(30)
+                
                 ZStack {
                     Image(name)
                         .resizable()
@@ -111,12 +102,22 @@ struct Grid: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
-
                 Text(hertzvalue(name: name))
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 20)
+                
+                NavigationLink(destination: Game(form: form).environmentObject(audioPlayer)) {
+                    ZStack {
+                        Image(systemName: "arrowshape.right.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.gray)
+                            .frame(width: 100)
+                            .padding(.bottom, 30)
+                    }
+                }
             }
         }
         
